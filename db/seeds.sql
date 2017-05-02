@@ -1,0 +1,2 @@
+INSERT INTO activity (name, activity, address, city, state, zip, catagory) VALUES ('Mercer County Park', 'Basketball', '1638 old trenton road', 'west windsor', 'nj', 08550, 'sports');
+INSERT INTO activity (name, activity, address, city, state, zip, catagory) VALUES ('Keansburg Amusement Park', 'Theme park', '275 Beachway Ave', 'Keansburg', 'nj', 07734, 'fun');
