@@ -1,0 +1,37 @@
+{
+  "name": "discovery",
+  "version": "1.0.0",
+  "description": "Web application that logs activities for users to visit",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinhubbard/Discovery.git"
+  },
+  "keywords": [
+    "node",
+    "mysql",
+    "express",
+    "handlebars",
+    "javascript",
+    "bootstrap",
+    "html",
+    "css",
+    "jquery"
+  ],
+  "author": "Kevin H, Ibad A, Dylan P, Kevin SA, Imran C",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinhubbard/Discovery/issues"
+  },
+  "homepage": "https://github.com/kevinhubbard/Discovery#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.13.0",
+    "sequelize": "^3.30.4"
+  }
+}
