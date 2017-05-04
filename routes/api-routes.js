@@ -1,68 +1,88 @@
-// *********************************************************************************
-// api-routes.js - this file offers a set of routes for displaying and saving data to the db
-// *********************************************************************************
 
-// Dependencies
-// =============================================================
+// // *********************************************************************************
+// // api-routes.js - this file offers a set of routes for displaying and saving data to the db
+// // *********************************************************************************
 
-// Requiring our models
-var db = require("../models");
 
-// Routes
-// =============================================================
-module.exports = function(app) {
+module.exports = function(app, passport) {
 
-  // GET route for getting all of the todos
-  app.get("/api/todos", function(req, res) {
-    // findAll returns all entries for a table when used with no options
-    db.Todo.findAll({}).then(function(dbTodo) {
-      // We have access to the todos as an argument inside of the callback function
-      res.json(dbTodo);
+  // =====================================
+  // HOME PAGE (with login links) ========
+  // =====================================
+  app.get('/', function(req, res) {
+    res.render('index.ejs'); // load the index.ejs file
+  });
+
+  // =====================================
+  // LOGIN ===============================
+  // =====================================
+  // show the login form
+  app.get('/login', function(req, res) {
+
+    // render the page and pass in any flash data if it exists
+    res.render('login.ejs', { message: req.flash('loginMessage') });
+  });
+
+  // process the login form
+  app.post('/login', passport.authenticate('local-login', {
+            successRedirect : '/profile', // redirect to the secure profile section
+            failureRedirect : '/login', // redirect back to the signup page if there is an error
+            failureFlash : true // allow flash messages
+    }),
+        function(req, res) {
+            console.log("test");
+
+            if (req.body.remember) {
+              req.session.cookie.maxAge = 1000 * 60 * 3;
+            } else {
+              req.session.cookie.expires = false;
+            }
+        res.redirect('/');
+    });
+
+  // =====================================
+  // SIGNUP ==============================
+  // =====================================
+  // show the signup form
+  app.get('/signup', function(req, res) {
+    // render the page and pass in any flash data if it exists
+    res.render('signup.ejs', { message: req.flash('signupMessage') });
+  });
+
+  // process the signup form
+  app.post('/signup', passport.authenticate('local-signup', {
+    successRedirect : '/profile', // redirect to the secure profile section
+    failureRedirect : '/signup', // redirect back to the signup page if there is an error
+    failureFlash : true // allow flash messages
+  }));
+
+  // =====================================
+  // PROFILE SECTION =========================
+  // =====================================
+  // we will want this protected so you have to be logged in to visit
+  // we will use route middleware to verify this (the isLoggedIn function)
+  app.get('/profile', isLoggedIn, function(req, res) {
+    res.render('profile.ejs', {
+      user : req.user // get the user out of session and pass to template
     });
   });
 
-  // POST route for saving a new todo
-  app.post("/api/todos", function(req, res) {
-    // create takes an argument of an object describing the item we want to
-    // insert into our table. In this case we just we pass in an object with a text
-    // and complete property
-    db.Todo.create({
-      text: req.body.text,
-      complete: req.body.complete
-    }).then(function(dbTodo) {
-      // We have access to the new todo as an argument inside of the callback function
-      res.json(dbTodo);
-    });
-  });
-
-  // DELETE route for deleting todos. We can get the id of the todo to be deleted from
-  // req.params.id
-  app.delete("/api/todos/:id", function(req, res) {
-    // Use the sequelize destroy method to delete a record from our table with the
-    // id in req.params.id. res.json the result back to the user
-    db.Todo.destroy({
-      where: {
-        id: req.params.id
-      }
-      }).then(function(dbDelete){
-        res.json(dbDelete)
-    });
-  });
-
-  // PUT route for updating todos. We can get the updated todo data from req.body
-  app.put("/api/todos", function(req, res) {
-    // Use the sequelize update method to update a todo to be equal to the value of req.body
-    // req.body will contain the id of the todo we need to update
-    db.Todo.update({
-      text: req.body.text,
-      complete: req.body.complete
-    }, {
-      where: {
-        id: req.body.id
-      }
-    
-    }).then(function(updated){
-      res.json(updated);
-    })
+  // =====================================
+  // LOGOUT ==============================
+  // =====================================
+  app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
   });
 };
+
+// route middleware to make sure
+function isLoggedIn(req, res, next) {
+
+  // if user is authenticated in the session, carry on
+  if (req.isAuthenticated())
+    return next();
+
+  // if they aren't redirect them to the home page
+  res.redirect('/');
+}
