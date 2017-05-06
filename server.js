@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser'); //
 var morgan = require('morgan');
 var app      = express();
+app.use(express.static('public/js'));
 var port     = process.env.PORT || 8080;
 
 var passport = require('passport');
