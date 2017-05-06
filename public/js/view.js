@@ -1,0 +1,34 @@
+$(document).ready(function(){
+	console.log("it works!");
+	$('#formSubmit').on('click',  getAllFields);
+	//event.preventDefault();
+	function Data (name, activity, address, city, state, zip, catagory){
+		this.name = name,
+		this.activity = activity,
+		this.address = address,
+		this.city = city,
+		this.state = state,
+		this.zip = zip,
+		this.catagory = catagory
+	}
+	return data;
+	console.log(data);
+	
+
+	function getAllFields() {
+
+		var user = new Data($('#name').val(), $('#activity').val(), $('#address').val(), $('#city').val(), $('#state').val(), $('#zip').val(), $('#catagory').val());
+
+		$('#name').val('');
+		$('#activity').val('');
+		$('#address').val('');
+		$('#city').val('');
+		$('#state').val('');
+		$('#zip').val('');
+		$('#catagory').val('');
+
+		console.log(user.name + '\n' + user.activity + '\n' + user.address + '\n' + user.city + '\n' + user.state + '\n' + user.zip + '\n' + user.catagory);
+
+		
+	}
+});
