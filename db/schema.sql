@@ -12,7 +12,7 @@ CREATE TABLE activity
 	city varchar(200) NOT NULL,
 	state varchar(50) NOT NULL,
 	zip int (5) NOT NULL, 
-	catagory varchar (400) NOT NULL
-	time_created datetime NOT NULL DEFAULT NOT(),
+	catagory varchar (400) NOT NULL,
+	time_created datetime NOT NULL DEFAULT NOW(),
 	PRIMARY KEY (id)
 );

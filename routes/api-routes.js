@@ -2,13 +2,20 @@
 // // *********************************************************************************
 // // api-routes.js - this file offers a set of routes for displaying and saving data to the db
 // // *********************************************************************************
+var db = require("../models")
 
-
-module.exports = function(app, passport) {
+module.exports = function(app, passport, bodyParser) {
 
   // =====================================
   // HOME PAGE (with login links) ========
   // =====================================
+  
+  app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+  app.use(bodyParser.json());
+
+
   app.get('/', function(req, res) {
     res.render('index.ejs'); // load the index.ejs file
   });
@@ -65,6 +72,26 @@ module.exports = function(app, passport) {
     res.render('profile.ejs', {
       user : req.user // get the user out of session and pass to template
     });
+
+  });
+
+  app.post('/api', function(req, res) {
+    db.activity.create({
+      name: req.body.name,
+      activity: req.body.activity,
+      address: req.body.address,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zip,
+      catagory: req.body.catagory
+
+    }).then(function(retAct){
+      res.json(retAct);
+    });
+
+    console.log(req.body);
+    res.json({message: 'it works'});
+
   });
 
   // =====================================
@@ -74,7 +101,7 @@ module.exports = function(app, passport) {
     req.logout();
     res.redirect('/');
   });
-};
+};//end export func.
 
 // route middleware to make sure
 function isLoggedIn(req, res, next) {
@@ -86,3 +113,7 @@ function isLoggedIn(req, res, next) {
   // if they aren't redirect them to the home page
   res.redirect('/');
 }
+
+// Requiring our model
+// var db = require("../models");
+

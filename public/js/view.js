@@ -1,7 +1,7 @@
 $(document).ready(function(){
-	console.log("it works!");
-	$('#formSubmit').on('click',  getAllFields);
-	//event.preventDefault();
+
+	
+
 	function Data (name, activity, address, city, state, zip, catagory){
 		this.name = name,
 		this.activity = activity,
@@ -11,11 +11,13 @@ $(document).ready(function(){
 		this.zip = zip,
 		this.catagory = catagory
 	}
-	return data;
-	console.log(data);
-	
 
-	function getAllFields() {
+
+
+	$('#formSubmit').click(function(event){
+
+
+		event.preventDefault();
 
 		var user = new Data($('#name').val(), $('#activity').val(), $('#address').val(), $('#city').val(), $('#state').val(), $('#zip').val(), $('#catagory').val());
 
@@ -29,6 +31,21 @@ $(document).ready(function(){
 
 		console.log(user.name + '\n' + user.activity + '\n' + user.address + '\n' + user.city + '\n' + user.state + '\n' + user.zip + '\n' + user.catagory);
 
-		
-	}
+		$.post('/api', user, function(res){
+			console.log(res);
+			console.log("test");
+		});
+
+
+		//return false;
+
+	});
+	
+
+
+
+
+	
+
+	
 });
