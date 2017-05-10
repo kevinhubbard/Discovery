@@ -3,6 +3,10 @@
 // // api-routes.js - this file offers a set of routes for displaying and saving data to the db
 // // *********************************************************************************
 var db = require("../models")
+var sequelize = require('sequelize');
+var fs = require('fs')
+const util = require('util')
+
 
 module.exports = function(app, passport, bodyParser) {
 
@@ -76,7 +80,7 @@ module.exports = function(app, passport, bodyParser) {
   });
 
   app.post('/api', function(req, res) {
-    db.activity.create({
+    db.Activity.create({
       name: req.body.name,
       activity: req.body.activity,
       address: req.body.address,
@@ -90,9 +94,11 @@ module.exports = function(app, passport, bodyParser) {
     });
 
     console.log(req.body);
-    res.json({message: 'it works'});
+    //res.json({message: 'it works'});
 
   });
+
+  
 
   // =====================================
   // LOGOUT ==============================

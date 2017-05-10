@@ -8,9 +8,10 @@ var morgan = require('morgan');
 var app      = express();
 app.use(express.static('public/js'));
 var port     = process.env.PORT || 8080;
-
+var sequelize = require('sequelize');
 var passport = require('passport');
 var flash    = require('connect-flash');
+var db = require("./models");
 
 // configuration ===============================================================
 // connect to our database
@@ -44,8 +45,14 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 require('./routes/api-routes.js')(app, passport, bodyParser); // load our routes and pass in our app and fully configured passport
 
 // launch ======================================================================
-app.listen(port);
-console.log('App running on port ' + port);
+// app.listen(port);
+// console.log('App running on port ' + port);
+db.sequelize.sync().then(function(){
+	app.listen(port, function(){
+		console.log("app listening on port " + port);
+	});
+	
+});
 
 
 

@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Activity = sequelize.define("activity", {
+  var Activity = sequelize.define("Activity", {
     name: {
       type: DataTypes.STRING,
       allowNull: false
@@ -21,13 +21,17 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
       zip: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
       catagory: {
       type: DataTypes.STRING,
       allowNull: false
     }
-  });
+  },
+  {
+    freezeTableName: true
+  }
+ );
   return Activity;
 };
