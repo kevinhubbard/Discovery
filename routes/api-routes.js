@@ -79,6 +79,17 @@ module.exports = function(app, passport, bodyParser) {
 
   });
 
+  app.get('/api', isLoggedIn, function(req, res) {
+    db.Activity.findAll({
+      where: {
+        catagory: "sports"
+      }
+    }).then(function(data){
+      console.log(data[0].get({plain: true}));
+      res.json(data);
+    });
+  });
+
   app.post('/api', function(req, res) {
     db.Activity.create({
       name: req.body.name,
@@ -98,7 +109,56 @@ module.exports = function(app, passport, bodyParser) {
 
   });
 
-  
+  app.get('/business', isLoggedIn, function(req, res) {
+    res.render('business.ejs', {
+      user: req.user
+    });
+  });
+    app.get('/event', isLoggedIn, function(req, res) {
+    res.render('event.ejs', {
+      user: req.user
+    });
+  });
+  app.get('/fishing', isLoggedIn, function(req, res) {
+    res.render('fishing.ejs', {
+      user: req.user
+    });
+  });  
+  app.get('/historic', isLoggedIn, function(req, res) {
+    res.render('historic.ejs', {
+      user: req.user
+    });
+  });
+  app.get('/outdoor', isLoggedIn, function(req, res) {
+    res.render('outdoor.ejs', {
+      user: req.user
+    });
+  });
+  app.get('/pet', isLoggedIn, function(req, res) {
+    res.render('pet.ejs', {
+      user: req.user
+    });
+  });
+  app.get('/rec', isLoggedIn, function(req, res) {
+    res.render('rec.ejs', {
+      user: req.user
+    });
+  });
+  app.get('/restaurant', isLoggedIn, function(req, res) {
+    res.render('restaurant.ejs', {
+      user: req.user
+    });
+  });
+  app.get('/scenic', isLoggedIn, function(req, res) {
+    res.render('scenic.ejs', {
+      user: req.user
+    });
+  });
+  app.get('/sports', isLoggedIn, function(req, res) {
+    res.render('sports.ejs', {
+      user: req.user
+    });
+  });
 
   // =====================================
   // LOGOUT ==============================
