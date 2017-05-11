@@ -34,11 +34,62 @@
 						<strong>username</strong>: <%= user.username %><br>
 						<strong>password</strong>: <%= user.password %>
 					</p>
+<!-- 					<p>
+						<strong>id</strong>: <%= Activity[0] %> <br>
+						<strong>id</strong>: <%= Activity[0].name %><br>
+						<strong>id</strong>: <%= Activity.catagory %>
+					</p> -->
 
 			</div>
 		</div>
 
 	</div>
+<!-- 	<div class="row">
+		<div class="col-sm-6">
+			<ul>
+			<% for (var i=0; i < Activity.length; i++) {%>
+			   <li><%= Activity[i].name %></li>
+			   <li><%= Activity[i].activity %></li>
+			   <li><%= Activity[i].address %></li>
+			   <li><%= Activity[i].city %></li>
+			   <li><%= Activity[i].state %></li>
+			   <li><%= Activity[i].zip %></li>
+			   <li><%= Activity[i].catagory %></li>
+			<% } %>
+			</ul>
+		</div>
+	</div> -->
+	          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><strong> Sports </strong></h3>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover" id='employee-table'>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Activity</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                  </tr>
+                </thead>
+                <tbody>
+				    <% for (var i = 0; i < Activity.length; i++) { %>
+				    <tr>
+				      <td><%= Activity[i].name %></td>
+				      <td><%= Activity[i].activity %></td>
+				      <td><%= Activity[i].address %></td>
+				      <td><%= Activity[i].city %></td>
+				      <td><%= Activity[i].state %></td>
+				      <td><%= Activity[i].zip %></td>
+				    </tr>    
+				   <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
 			<div class="row">
 			<div class="col-md-12">
 				<h1>Discover<span class="glyphicon glyphicon-globe"></span></h1>

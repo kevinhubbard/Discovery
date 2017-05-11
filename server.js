@@ -6,7 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser'); //
 var morgan = require('morgan');
 var app      = express();
-app.use(express.static('public/js'));
+var path = require("path");
+app.use(express.static('./public/js'));
+app.use(express.static('./public'));
 var port     = process.env.PORT || 8080;
 var sequelize = require('sequelize');
 var passport = require('passport');

@@ -79,7 +79,7 @@ module.exports = function(app, passport, bodyParser) {
 
   });
 
-  app.get('/api', isLoggedIn, function(req, res) {
+/*  app.get('/api', isLoggedIn, function(req, res) {
     db.Activity.findAll({
       where: {
         catagory: "sports"
@@ -88,7 +88,7 @@ module.exports = function(app, passport, bodyParser) {
       console.log(data[0].get({plain: true}));
       res.json(data);
     });
-  });
+  });*/
 
   app.post('/api', function(req, res) {
     db.Activity.create({
@@ -155,8 +155,20 @@ module.exports = function(app, passport, bodyParser) {
     });
   });
   app.get('/sports', isLoggedIn, function(req, res) {
-    res.render('sports.ejs', {
-      user: req.user
+      db.Activity.findAll({
+      where: {
+      catagory: "sports"
+      }
+    }).then(function(data){
+      //console.log(data[0].get({plain: true}));
+      console.log(data);
+      
+      res.render('sports.ejs', {
+        user: req.user,
+        Activity: data
+
+      });
+    
     });
   });
 
