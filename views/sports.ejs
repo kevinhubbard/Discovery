@@ -5,17 +5,66 @@
 	<title>Sports!</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-	<script
-			  src="https://code.jquery.com/jquery-3.2.1.min.js"
-			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-			  crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
 	<script type="text/javascript" language="javascript" src="view.js"> </script>
-	<style>
-		body 		{ padding-top:80px; word-wrap:break-word; }
-	</style>
+
 </head>
 <body>
 <div class="container">
+
+<nav id="siteNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <!-- <div class="container"> -->
+            <!-- Logo and responsive toggle -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <span class="glyphicon glyphicon-globe"></span> 
+                    Discover
+                </a>
+            </div>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+					<li class="active">
+					    <a href="/profile">Home</a>
+					</li>
+                    <li>
+                        <a href="/profile">Profile</a>
+                    </li>
+                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="about-us">
+                            <li><a href="/sports">Sports</a></li>
+                            <li><a href="/outdoors">Outdoor fitness</a></li>
+                            <li><a href="/fishing">Fishing</a></li>
+                            <li><a href="/recreational">Rectional areas</a></li>
+                            <li><a href="/scenic">Scenic Places</a></li>
+                            <li><a href="/historic">Historic spots</a></li>
+                            <li><a href="/petfriendly">Pet-Friendly places</a></li>
+                            <li><a href="/events">Events</a></li>
+                            <li><a href="/restaurants">Restaurants</a></li>
+                            <li><a href="/Business">Fun Businesses</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/login">Login</a>
+                    </li>
+                    <li>
+                        <a href="/signup">Sign Up</a>
+                    </li>
+                </ul>
+            
+            </div><!-- /.navbar-collapse -->
+        <!-- </div>/.container -->
+    </nav><br><br>
 
 	<div class="page-header text-center">
 		<h1><span class="fa fa-anchor"></span> Sports Page</h1>
@@ -34,31 +83,13 @@
 						<strong>username</strong>: <%= user.username %><br>
 						<strong>password</strong>: <%= user.password %>
 					</p>
-<!-- 					<p>
-						<strong>id</strong>: <%= Activity[0] %> <br>
-						<strong>id</strong>: <%= Activity[0].name %><br>
-						<strong>id</strong>: <%= Activity.catagory %>
-					</p> -->
+
 
 			</div>
 		</div>
 
 	</div>
-<!-- 	<div class="row">
-		<div class="col-sm-6">
-			<ul>
-			<% for (var i=0; i < Activity.length; i++) {%>
-			   <li><%= Activity[i].name %></li>
-			   <li><%= Activity[i].activity %></li>
-			   <li><%= Activity[i].address %></li>
-			   <li><%= Activity[i].city %></li>
-			   <li><%= Activity[i].state %></li>
-			   <li><%= Activity[i].zip %></li>
-			   <li><%= Activity[i].catagory %></li>
-			<% } %>
-			</ul>
-		</div>
-	</div> -->
+
 	          <div class="panel panel-primary">
             <div class="panel-heading">
               <h3 class="panel-title"><strong> Sports </strong></h3>
@@ -90,13 +121,7 @@
               </table>
             </div>
           </div>
-			<div class="row">
-			<div class="col-md-12">
-				<h1>Discover<span class="glyphicon glyphicon-globe"></span></h1>
-				<p>Web application that logs activites for users visit</p>
-			</div>
 
-		</div>
 
 </div>
 
