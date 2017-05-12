@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
+    "username": "ibad",
+    "password": "Ibad123",
     "database": "discover_db",
     "host": "localhost",
     "dialect": "mysql"

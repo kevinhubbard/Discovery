@@ -110,48 +110,156 @@ module.exports = function(app, passport, bodyParser) {
   });
 
   app.get('/business', isLoggedIn, function(req, res) {
-    res.render('business.ejs', {
-      user: req.user
+       db.Activity.findAll({
+      where: {
+      catagory: "business"
+      }
+    }).then(function(data){
+      //console.log(data[0].get({plain: true}));
+      console.log(data);
+      
+      res.render('business.ejs', {
+        user: req.user,
+        Activity: data
+
+      });
+    
     });
   });
     app.get('/event', isLoggedIn, function(req, res) {
-    res.render('event.ejs', {
-      user: req.user
+      db.Activity.findAll({
+      where: {
+      catagory: "event"
+      }
+    }).then(function(data){
+      //console.log(data[0].get({plain: true}));
+      console.log(data);
+      
+      res.render('event.ejs', {
+        user: req.user,
+        Activity: data
+
+      });
+    
     });
   });
   app.get('/fishing', isLoggedIn, function(req, res) {
-    res.render('fishing.ejs', {
-      user: req.user
+      db.Activity.findAll({
+      where: {
+      catagory: "fishing"
+      }
+    }).then(function(data){
+      //console.log(data[0].get({plain: true}));
+      console.log(data);
+      
+      res.render('fishing.ejs', {
+        user: req.user,
+        Activity: data
+
+      });
+    
     });
   });  
   app.get('/historic', isLoggedIn, function(req, res) {
-    res.render('historic.ejs', {
-      user: req.user
+      db.Activity.findAll({
+      where: {
+      catagory: "historic"
+      }
+    }).then(function(data){
+      //console.log(data[0].get({plain: true}));
+      console.log(data);
+      
+      res.render('historic.ejs', {
+        user: req.user,
+        Activity: data
+
+      });
+    
     });
   });
   app.get('/outdoor', isLoggedIn, function(req, res) {
-    res.render('outdoor.ejs', {
-      user: req.user
+      db.Activity.findAll({
+      where: {
+      catagory: "outdoor"
+      }
+    }).then(function(data){
+      //console.log(data[0].get({plain: true}));
+      console.log(data);
+      
+      res.render('outdoor.ejs', {
+        user: req.user,
+        Activity: data
+
+      });
+    
     });
   });
   app.get('/pet', isLoggedIn, function(req, res) {
-    res.render('pet.ejs', {
-      user: req.user
+      db.Activity.findAll({
+      where: {
+      catagory: "pet"
+      }
+    }).then(function(data){
+      //console.log(data[0].get({plain: true}));
+      console.log(data);
+      
+      res.render('pet.ejs', {
+        user: req.user,
+        Activity: data
+
+      });
+    
     });
   });
   app.get('/rec', isLoggedIn, function(req, res) {
-    res.render('rec.ejs', {
-      user: req.user
+      db.Activity.findAll({
+      where: {
+      catagory: "rec"
+      }
+    }).then(function(data){
+      //console.log(data[0].get({plain: true}));
+      console.log(data);
+      
+      res.render('rec.ejs', {
+        user: req.user,
+        Activity: data
+
+      });
+    
     });
   });
   app.get('/restaurant', isLoggedIn, function(req, res) {
-    res.render('restaurant.ejs', {
-      user: req.user
+      db.Activity.findAll({
+      where: {
+      catagory: "restaurant"
+      }
+    }).then(function(data){
+      //console.log(data[0].get({plain: true}));
+      console.log(data);
+      
+      res.render('restaurant.ejs', {
+        user: req.user,
+        Activity: data
+
+      });
+    
     });
   });
   app.get('/scenic', isLoggedIn, function(req, res) {
-    res.render('scenic.ejs', {
-      user: req.user
+      db.Activity.findAll({
+      where: {
+      catagory: "scenic"
+      }
+    }).then(function(data){
+      //console.log(data[0].get({plain: true}));
+      console.log(data);
+      
+      res.render('scenic.ejs', {
+        user: req.user,
+        Activity: data
+
+      });
+    
     });
   });
   app.get('/sports', isLoggedIn, function(req, res) {
