@@ -19,6 +19,9 @@ img {
     color: white;
     text-align: center;
 }
+#catagory {
+  border-radius: 0 !important;
+}
 a {
     color: yellowgreen;
     -webkit-transition: all .35s;

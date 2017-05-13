@@ -36,7 +36,7 @@ $(document).ready(function(){
 			console.log("test");
 		});
 
-
+		$("#myModal").modal("show")
 		//return false;
 
 	});
