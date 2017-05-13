@@ -79,16 +79,6 @@ module.exports = function(app, passport, bodyParser) {
 
   });
 
-/*  app.get('/api', isLoggedIn, function(req, res) {
-    db.Activity.findAll({
-      where: {
-        catagory: "sports"
-      }
-    }).then(function(data){
-      console.log(data[0].get({plain: true}));
-      res.json(data);
-    });
-  });*/
 
   app.post('/api', function(req, res) {
     db.Activity.create({
@@ -105,7 +95,6 @@ module.exports = function(app, passport, bodyParser) {
     });
 
     console.log(req.body);
-    //res.json({message: 'it works'});
 
   });
 
@@ -115,7 +104,6 @@ module.exports = function(app, passport, bodyParser) {
       catagory: "business"
       }
     }).then(function(data){
-      //console.log(data[0].get({plain: true}));
       console.log(data);
       
       res.render('business.ejs', {
@@ -132,7 +120,6 @@ module.exports = function(app, passport, bodyParser) {
       catagory: "event"
       }
     }).then(function(data){
-      //console.log(data[0].get({plain: true}));
       console.log(data);
       
       res.render('event.ejs', {
@@ -149,7 +136,6 @@ module.exports = function(app, passport, bodyParser) {
       catagory: "fishing"
       }
     }).then(function(data){
-      //console.log(data[0].get({plain: true}));
       console.log(data);
       
       res.render('fishing.ejs', {
@@ -166,7 +152,6 @@ module.exports = function(app, passport, bodyParser) {
       catagory: "historic"
       }
     }).then(function(data){
-      //console.log(data[0].get({plain: true}));
       console.log(data);
       
       res.render('historic.ejs', {
@@ -183,7 +168,6 @@ module.exports = function(app, passport, bodyParser) {
       catagory: "outdoor"
       }
     }).then(function(data){
-      //console.log(data[0].get({plain: true}));
       console.log(data);
       
       res.render('outdoor.ejs', {
@@ -200,7 +184,6 @@ module.exports = function(app, passport, bodyParser) {
       catagory: "pet"
       }
     }).then(function(data){
-      //console.log(data[0].get({plain: true}));
       console.log(data);
       
       res.render('pet.ejs', {
@@ -217,7 +200,6 @@ module.exports = function(app, passport, bodyParser) {
       catagory: "rec"
       }
     }).then(function(data){
-      //console.log(data[0].get({plain: true}));
       console.log(data);
       
       res.render('rec.ejs', {
@@ -234,7 +216,6 @@ module.exports = function(app, passport, bodyParser) {
       catagory: "restaurant"
       }
     }).then(function(data){
-      //console.log(data[0].get({plain: true}));
       console.log(data);
       
       res.render('restaurant.ejs', {
@@ -251,7 +232,6 @@ module.exports = function(app, passport, bodyParser) {
       catagory: "scenic"
       }
     }).then(function(data){
-      //console.log(data[0].get({plain: true}));
       console.log(data);
       
       res.render('scenic.ejs', {
@@ -268,7 +248,6 @@ module.exports = function(app, passport, bodyParser) {
       catagory: "sports"
       }
     }).then(function(data){
-      //console.log(data[0].get({plain: true}));
       console.log(data);
       
       res.render('sports.ejs', {
@@ -298,8 +277,4 @@ function isLoggedIn(req, res, next) {
 
   // if they aren't redirect them to the home page
   res.redirect('/');
-}
-
-// Requiring our model
-// var db = require("../models");
-
+};

@@ -5,9 +5,12 @@ body {
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
     background-image: url('/images/discover.jpg');
 }
-#form{
+#test{
     color: white;
 
+}
+img {
+    margin-top: 10px;
 }
 #tableid{
     margin-top: 100px;
