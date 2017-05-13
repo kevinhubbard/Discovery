@@ -4,7 +4,7 @@ module.exports = {
     'connection': {
         'host': 'localhost',
         'user': 'root',
-        'password': 'root'
+        'password': 'test'
     },
 	'database': 'discover_db',
     'users_table': 'users'
