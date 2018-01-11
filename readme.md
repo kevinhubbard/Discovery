@@ -16,3 +16,21 @@ Example:
     }
 
 Otherwise leave it as is to view your changes in real time.
+
+
+
+QUICK GIT REFRESHER:
+
+navigate to remote repo:
+cd path/to/app
+
+before adding it's important to pull the latest changes first:
+git pull 
+
+then:
+git add .
+git commit 'my changes'
+git push
+
+
+
