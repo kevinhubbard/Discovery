@@ -11,6 +11,7 @@ import Register from './components/register/Register';
 import Discover from './components/discover/Discover';
 import ShareLocation from './components/share/ShareLocation';
 
+
 ReactDOM.render(
 
 	  <Router>
