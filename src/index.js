@@ -8,6 +8,8 @@ import registerServiceWorker from './registerServiceWorker';
 import Header from './components/header/Header';
 import Layout from './components/Layout';
 import Register from './components/register/Register';
+import Discover from './components/discover/Discover';
+import ShareLocation from './components/share/ShareLocation';
 
 ReactDOM.render(
 
@@ -15,6 +17,8 @@ ReactDOM.render(
 	      <Layout >
 	        <Route exact path='/' component={App} />
 	        <Route path='/login' component={Register} />
+	        <Route path='/discover' component={Discover} />
+	        <Route path='/share' component={ShareLocation} />
 	      </Layout>
 	  </Router>,
   document.getElementById('root')

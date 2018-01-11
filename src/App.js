@@ -13,7 +13,7 @@ class App extends Component {
 						<div className="panel panel-primary">
 					      <div className="panel-heading"><h1 className="text-center">Discover a New Place</h1></div>
 					      <div className="panel-body text-center">
-					      	<button className="btn btn-success">Discover</button>
+					      	<Link to='/discover'><button className="btn btn-success">Discover</button></Link>
 					      </div>
 					    </div>
 					</div>
@@ -23,7 +23,7 @@ class App extends Component {
 						<div className="panel panel-success">
 					      <div className="panel-heading text-center"><h1>Share a new Discovery</h1></div>
 					      <div className="panel-body text-center">
-					      	<button className="btn btn-info">Share</button>
+					      	<Link to='/share'><button className="btn btn-info">Share</button></Link>
 					      </div>
 					    </div>
 					</div>
@@ -39,7 +39,7 @@ class App extends Component {
 							    <option>Parks</option>
 							    <option>Nightlife</option>
 							    <option>Sports</option>
-							    <option>Speakeasies</option>
+							    <option>Concerts</option>
 							  </select>
 							</div>
 					      </div>
