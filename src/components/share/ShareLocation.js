@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import { Link } from 'react-router-dom';
-import firebase from '../../firebase.js';
+import firebase, { auth, provider } from '../../firebase.js';
 
 class ShareLocation extends Component {
   constructor() {
@@ -9,31 +9,58 @@ class ShareLocation extends Component {
     this.state = {
       currentItem: '',
       username: '',
-      items: []
+      items: [],
+      user: null
     }
+    this.login = this.login.bind(this); 
+    this.logout = this.logout.bind(this); 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+
+  logout() {
+    auth.signOut()
+      .then(() => {
+        this.setState({
+          user: null
+        });
+      });
   }
+
+  login() {
+    auth.signInWithPopup(provider) 
+      .then((result) => {
+        const user = result.user;
+        this.setState({
+          user
+        });
+      });
+  }
+
+  handleChange(e) {
+  this.setState({
+    [e.target.name]: e.target.value
+  });
+}
+  
+
   handleSubmit(e) {
     e.preventDefault();
     const itemsRef = firebase.database().ref('items');
     const item = {
-      title: this.state.currentItem,
-      user: this.state.username
-    }
+    title: this.state.currentItem,
+    user: this.state.user.displayName || this.state.user.email
+  }
     itemsRef.push(item);
     this.setState({
       currentItem: '',
       username: ''
     });
   }
+
   componentDidMount() {
     const itemsRef = firebase.database().ref('items');
+
     itemsRef.on('value', (snapshot) => {
       let items = snapshot.val();
       let newState = [];
@@ -48,14 +75,23 @@ class ShareLocation extends Component {
         items: newState
       });
     });
-  }
+
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+      } 
+    });
+}
   removeItem(itemId) {
     const itemRef = firebase.database().ref(`/items/${itemId}`);
     itemRef.remove();
   }
+
+
   render() {
     return (
 <div className='container center-block'>
+  {this.state.user ?
   <div className="row text-center">
     <div className='col-md-6'>
       <div className="panel-group">
@@ -67,10 +103,10 @@ class ShareLocation extends Component {
             <section className='add-item'>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                  <input className="form-control input-lg" type="text" name="username" placeholder="What's your name?" onChange={this.handleChange} value={this.state.username} />
+                  <input className='form-control input-lg' type="text" name="username" placeholder="What's your name?" value={this.state.user.displayName || this.state.user.email} />
                 </div>
                 <div className="form-group">
-                  <input className="form-control input-lg" type="text" name="currentItem" placeholder="Where are you?" onChange={this.handleChange} value={this.state.currentItem} />
+                  <input className='form-control input-lg' type="text" name="currentItem" placeholder="What are you bringing?" onChange={this.handleChange} value={this.state.currentItem} />
                 </div>
                 <button className="btn btn-warning">Add Location</button>
               </form>
@@ -90,7 +126,9 @@ class ShareLocation extends Component {
               <li className='list-unstyled' key={item.id}>
                 <h3>{item.title}</h3>
                 <p>Visited by: {item.user}</p>
-                <button className="btn btn-danger" onClick={() => this.removeItem(item.id)}>Remove Location</button>
+
+                {item.user === this.state.user.displayName || item.user === this.state.user.email ?
+                <button className="btn btn-danger" onClick={() => this.removeItem(item.id)}>Remove Location</button> : null}
               </li>
               )
               })}
@@ -100,9 +138,12 @@ class ShareLocation extends Component {
       </div>
     </div>
   </div>
+  :
+  <div className='jumbotron'>
+    <h1 className='text-center'>Please Login with your Gmail account to use Discovery</h1>
+  </div>
+  }
 </div>
-
-      
     );
   }
 }

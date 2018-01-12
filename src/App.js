@@ -1,12 +1,52 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
+import firebase, { auth, provider } from './firebase.js';
 
 
 class App extends Component {
+constructor() {
+    super();
+    this.state = {
+      user: null  
+    }
+
+    this.login = this.login.bind(this); 
+    this.logout = this.logout.bind(this); 
+}
+	
+  
+	logout() {
+	  auth.signOut()
+	    .then(() => {
+	      this.setState({
+	        user: null
+	      });
+	    });
+	}
+	login(){
+	  auth.signInWithPopup(provider) 
+	    .then((result) => {
+	      const user = result.user;
+	      this.setState({
+	        user
+	      });
+	    });
+	}
+
+	componentDidMount() {
+		  auth.onAuthStateChanged((user) => {
+		    if (user) {
+		      this.setState({ user });
+		    } 
+		  });
+	}
+
+	
 	render(){
 		return(
 			<div className="container">
+				{ this.state.user ?
 				<div className="row">
 				<div className="col-md-4">
 					<div className="panel-group">
@@ -47,9 +87,17 @@ class App extends Component {
 					</div>
 				</div>
 				</div>
+
+				:
+				
+				<div className='jumbotron'>
+					<h1 className='text-center'>Please Login with your Gmail account to use Discovery</h1>
+				</div>
+			}
 			</div>
 			
 			);
+	
 	}
 }
 
