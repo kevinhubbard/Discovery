@@ -55,50 +55,52 @@ class ShareLocation extends Component {
   }
   render() {
     return (
-      <div className='container'>
-          <div className="panel-group">
-            <div className="panel panel-primary">
-            <div className="panel-header">
-              <h1>Share your Location</h1>
-            </div>           
-            <div className="panel-body">
-            <div className='row'>
-              <section className='add-item'>
-                    <form onSubmit={this.handleSubmit}>
-                      <div className="form-group">
-                        <input className="form-control input-lg" type="text" name="username" placeholder="What's your name?" onChange={this.handleChange} value={this.state.username} />
-                      </div>
-                      <div className="form-group">
-                        <input className="form-control input-lg" type="text" name="currentItem" placeholder="Where are you?" onChange={this.handleChange} value={this.state.currentItem} />
-                      </div>
-                      <button className="btn btn-warning">Add Location</button>
-                    </form>
-              </section>
-              </div>
-              </div>
-            </div>
-
-          </div>
-          <div className='display-item panel-group'>
-            <div className="panel panel-info">
-              <div className="panel-header"><h1>Your Shared Locations</h1></div>
-                <div className="panel-body">
-                  <ul>
-                    {this.state.items.map((item) => {
-                      return (
-                        <li key={item.id}>
-                          <h3>{item.title}</h3>
-                          <p>brought by: {item.user}
-                            <button className="btn btn-danger" onClick={() => this.removeItem(item.id)}>Remove Location</button>
-                          </p>
-                        </li>
-                      )
-                    })}
-                  </ul>
+<div className='container center-block'>
+  <div className="row text-center">
+    <div className='col-md-6'>
+      <div className="panel-group">
+        <div className="panel panel-primary">
+          <div className="panel-heading">
+            <h1>Share your Location</h1>
+          </div>           
+          <div className="panel-body">
+            <section className='add-item'>
+              <form onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                  <input className="form-control input-lg" type="text" name="username" placeholder="What's your name?" onChange={this.handleChange} value={this.state.username} />
                 </div>
-              </div>
+                <div className="form-group">
+                  <input className="form-control input-lg" type="text" name="currentItem" placeholder="Where are you?" onChange={this.handleChange} value={this.state.currentItem} />
+                </div>
+                <button className="btn btn-warning">Add Location</button>
+              </form>
+            </section>
           </div>
+        </div>
       </div>
+    </div>
+    <div className='col-md-6 text-center'>
+      <div className='display-item panel-group'>
+        <div className="panel panel-info">
+          <div className="panel-heading"><h1>Your Shared Locations</h1></div>
+          <div className="panel-body">
+            <ul className='list-group'>
+            {this.state.items.map((item) => {
+            return (
+              <li className='list-unstyled' key={item.id}>
+                <h3>{item.title}</h3>
+                <p>Visited by: {item.user}</p>
+                <button className="btn btn-danger" onClick={() => this.removeItem(item.id)}>Remove Location</button>
+              </li>
+              )
+              })}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
       
     );
