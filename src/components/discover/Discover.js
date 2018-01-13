@@ -100,6 +100,7 @@ class Discover extends Component {
 		            {this.state.items.map((item) => {
 		            return (
 		              <li className='list-unstyled' key={item.id}>
+                    <img style={{with:100, height:100}} className='img-responsive img-circle profile-pic center-block' src={this.state.user.photoURL} />
 		                <h3>{item.title}</h3>
 		                <p>Visited by: {item.user}</p>
 		              </li>

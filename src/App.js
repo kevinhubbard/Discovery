@@ -47,45 +47,52 @@ constructor() {
 		return(
 			<div className="container">
 				{ this.state.user ?
+
 				<div className="row">
-				<div className="col-md-4">
-					<div className="panel-group">
-						<div className="panel panel-primary">
-					      <div className="panel-heading"><h1 className="text-center">Discover a New Place</h1></div>
-					      <div className="panel-body text-center">
-					      	<Link to='/discover'><button className="btn btn-success">Discover</button></Link>
-					      </div>
-					    </div>
+						<div className="col-md-12">
+							<div className="col-md-4 col-md-offset-4">
+				        		<img style={{with:100, height:100}} className='img-responsive img-circle profile-pic center-block' src={this.state.user.photoURL} />
+				        		<h5 className="text-info text-center">Welcome to Discovery {this.state.user.displayName || this.state.user.email}</h5>
+				        	</div>
+				        </div>
+					<div className="col-md-4">
+						<div className="panel-group">
+							<div className="panel panel-primary">
+						      <div className="panel-heading"><h1 className="text-center">Discover a New Place</h1></div>
+						      <div className="panel-body text-center">
+						      	<Link to='/discover'><button className="btn btn-success">Discover</button></Link>
+						      </div>
+						    </div>
+						</div>
 					</div>
-				</div>
-				<div className="col-md-4">
-					<div className="panel-group">
-						<div className="panel panel-success">
-					      <div className="panel-heading text-center"><h1>Share a new Discovery</h1></div>
-					      <div className="panel-body text-center">
-					      	<Link to='/share'><button className="btn btn-info">Share</button></Link>
-					      </div>
-					    </div>
+					<div className="col-md-4">
+						<div className="panel-group">
+							<div className="panel panel-success">
+						      <div className="panel-heading text-center"><h1>Share a new Discovery</h1></div>
+						      <div className="panel-body text-center">
+						      	<Link to='/share'><button className="btn btn-info">Share</button></Link>
+						      </div>
+						    </div>
+						</div>
 					</div>
-				</div>
-				<div className="col-md-4">
-					<div className="panel-group">
-						<div className="panel panel-info">
-					      <div className="panel-heading"><h1>Search Categories</h1></div>
-					      <div className="panel-body">
-					      	<div className="form-group">
-							  <label htmlFor="sel1">Select a Category</label>
-							  <select className="form-control" id="sel1">
-							    <option>Parks</option>
-							    <option>Nightlife</option>
-							    <option>Sports</option>
-							    <option>Concerts</option>
-							  </select>
-							</div>
-					      </div>
-					    </div>
+					<div className="col-md-4">
+						<div className="panel-group">
+							<div className="panel panel-info">
+						      <div className="panel-heading"><h1>Search Categories</h1></div>
+						      <div className="panel-body">
+						      	<div className="form-group">
+								  <label htmlFor="sel1">Select a Category</label>
+								  <select className="form-control" id="sel1">
+								    <option>Parks</option>
+								    <option>Nightlife</option>
+								    <option>Sports</option>
+								    <option>Concerts</option>
+								  </select>
+								</div>
+						      </div>
+						    </div>
+						</div>
 					</div>
-				</div>
 				</div>
 
 				:

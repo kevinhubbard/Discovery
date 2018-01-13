@@ -106,7 +106,7 @@ class ShareLocation extends Component {
                   <input className='form-control input-lg' type="text" name="username" placeholder="What's your name?" value={this.state.user.displayName || this.state.user.email} />
                 </div>
                 <div className="form-group">
-                  <input className='form-control input-lg' type="text" name="currentItem" placeholder="What are you bringing?" onChange={this.handleChange} value={this.state.currentItem} />
+                  <input className='form-control input-lg' type="text" name="currentItem" placeholder="Where are you?" onChange={this.handleChange} value={this.state.currentItem} />
                 </div>
                 <button className="btn btn-warning">Add Location</button>
               </form>
